@@ -8,10 +8,10 @@ enum {
 	ROLL,
 	ATTACK
 }
-
+var initial_position = Vector2.DOWN
 var state = MOVE
 var velocity = Vector2.ZERO
-var roll_vector = Vector2.LEFT
+var roll_vector = initial_position
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -21,7 +21,7 @@ onready var swordHitBox = $HitboxPivot/SwordHitBox
 
 func _ready(): 
 	animationTree.active = true
-	swordHitBox.knockback_vector = Vector2.LEFT
+	swordHitBox.knockback_vector = initial_position
 
 func _physics_process(delta):
 	match state:
