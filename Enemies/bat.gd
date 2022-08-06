@@ -1,8 +1,15 @@
 extends KinematicBody2D
 
+enum {
+	IDLE,
+	WANDER,
+	CHASE
+}
+
 var knockback = Vector2.ZERO
 var BatDeathEffect = preload("res://Effects/BatDeath.tscn")
 onready var Health = $Health
+onready var stats = IDLE
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO,200* delta)
